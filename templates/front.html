@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>CS253 BLOG</title>
+    </head>
+
+    <style type="text/css">
+    h1 {
+        text-align: center;
+    }
+    body {
+        font-family: sans-serif; width: 800px; margin: 0 auto; padding: 10px;
+    }
+    error {
+        color: red;
+    }
+    label {
+        display: block; font-size: 20px;
+    }
+    input[type=text] {
+        width: 400px; font-size: 20px; padding: 2px;
+    }
+    textarea {
+        width: 400px; height: 200px; font-size: 17px; font-family: monospace;
+    }
+    input[type=submit] {
+        font-size: 24px;
+    }
+    .last_update{
+        position: absolute;
+        right: 20px ;
+        bottom: 20px;
+        color: #999;
+    }
+    hr {
+        margin: 20px auto;
+    }
+
+    .blog + .blog {
+        margin-top: 20px;
+    }
+    .blog-subject {
+        font-weight: bold; font-size: 20px;
+    }
+    .blog-body {
+        margin: 0; font-size: 17px;
+    }
+    .blog-date{
+        position: absolute;
+        right: 20px ;
+        bottom: 20px;
+        color: #999;
+    }
+</style>
+
+    <body>
+        <h1>CS253 Blog</h1>
+
+       {% for blog in blogs %}
+            <div class="blog">
+                <div class = "blog-subject">{{blog.subject}}</div>
+               <!-- <div class="blog-date">{{blog.created.strftime("%b %d, %Y")}}</div> -->
+                <hr>
+                <pre class="blog-body"> {{blog.content}} </pre>
+            </div>
+        {% endfor %}
+        <div class="last_update">Queried {{time_elapsed}} seconds ago</div>
+    </body>
+
+</html>
